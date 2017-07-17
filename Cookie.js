@@ -1,4 +1,4 @@
-helpers.chocolateChip = function (cookieName) {
+export const chocolateChip = function (cookieName) {
   var re = new RegExp(`${cookieName}=([^;]+)`);
   var value = re.exec(document.cookie);
   var cookie = (value !== null) ? unescape(value[1]) : null;
@@ -11,10 +11,16 @@ helpers.chocolateChip = function (cookieName) {
   return cookie;
 };
 
-helpers.cookieDough = function (name, cookieObject, expires, path) {
+export const cookieDough = function (name, cookieObject, expires, path) {
   document.cookie = `${name}=${JSON.stringify(cookieObject)}; expires=${expires.wDay}, ${expires.date}  ${expires.time}; path=${path}`;
 };
 
-helpers.cookieCrumb = function (name) {
+export const cookieCrumb = function (name) {
   document.cookie = `${name}=; expires=Fri, 27 Dec 1996 08:54:00 UTC`;
+};
+
+export default {
+  chocolateChip,
+  cookieDough,
+  cookieCrumb,
 };
